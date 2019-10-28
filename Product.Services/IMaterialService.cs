@@ -9,5 +9,6 @@ namespace Product.Services
         MaterialModel GetById(Int32 id);
         IList<MaterialModel> GetAll();
         void Merge(Int32 materialIdToKeep, Int32 materialIdToDelete);
+        IList<MaterialModel> GetAllExceptThisID(int id);
     }
 }

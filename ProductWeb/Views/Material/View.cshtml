@@ -7,12 +7,29 @@
 <h2>@Model.Name</h2>
 
 <div>
-    ID: $@Model.MaterialId
+    ID: @Model.MaterialId
+    @Html.HiddenFor(model => model.MaterialId)
 </div>
 <div>
     Cost: $@Model.Cost
 </div>
-<p>
-    <button class="btn btn-warning">Merge</button>
-    Please implement a Merge functionality from here.
-</p>
+@if(ViewBag.Materials != null)
+{
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.MaterialId)
+        <p>
+            <div>
+                Merge with: @Html.DropDownList("ddlMaterials", ViewBag.Materials as SelectList, "- Please Select -", new { @class = "form-control" })
+               
+            </div>
+            <div>
+                <button class="btn btn-warning">Merge</button>
+                @Html.ActionLink("Back to List", "Index", "Material")
+            </div>
+        </p>
+    }
+</div>
+}
+

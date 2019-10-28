@@ -10,5 +10,7 @@ namespace Product.Data.Repositories
         IList<Material> GetAll();
         void Update(Int32 id, String name, Decimal cost);
         void Delete(Int32 id);
+        IList<Material> GetAllExceptThisID(int id);
+        void Merge(Int32 materialIdToKeep, Int32 materialIdToDelete);
     }
 }

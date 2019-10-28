@@ -25,9 +25,14 @@ namespace Product.Services
             return _materialRepository.GetAll().Select(Transfer).ToList();
         }
 
+        public IList<MaterialModel> GetAllExceptThisID(Int32 id)
+        {
+            return _materialRepository.GetAllExceptThisID(id).Select(Transfer).ToList();
+        }
+
         public void Merge(Int32 materialIdToKeep, Int32 materialIdToDelete)
         {
-            throw new NotImplementedException("TODO: Please implement me");
+            _materialRepository.Merge(materialIdToKeep, materialIdToDelete);
         }
 
         private MaterialModel Transfer(Data.Entities.Material entity)
@@ -39,5 +44,7 @@ namespace Product.Services
                 Cost = entity.Cost
             };
         }
+
+      
     }
 }
